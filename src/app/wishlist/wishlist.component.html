@@ -1,0 +1,46 @@
+<div class="wishlist-container">
+  <h2 class="wishlist-header">My Wishlist</h2>
+
+  <div *ngIf="loading" class="loading">Loading wishlist...</div>
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+  <div class="wishlist-items" *ngIf="!loading && !errorMessage">
+    <div class="wishlist-item" *ngFor="let item of wishlistItems">
+      <img [src]="item.imageCover" alt="Wishlist Product" />
+      <h3>{{ item.title }}</h3>
+      <p class="price">Price: {{ item.price }} EGP</p>
+
+      <button class="remove-btn" (click)="removeItem(item._id)">Remove</button>
+
+      <button
+        class="add-cart-btn"
+        [class.cart-active]="isInCart(item)"
+        (click)="toggleCart(item)"
+        [ngClass]="{'remove-cart-btn': isInCart(item)}"
+      >
+        {{ isInCart(item) ? 'Remove from Cart' : 'Add to Cart' }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .remove-btn {
+    background-color: lightcoral;
+  }
+  .remove-btn:hover {
+    background-color: #8B00FF;
+  }
+  .add-cart-btn {
+    background-color: #AB84CC;
+  }
+  .add-cart-btn:hover {
+    background-color: #8B00FF;
+  }
+  .remove-cart-btn {
+    background-color: lightgreen;
+  }
+  .remove-cart-btn:hover {
+    background-color: #8B00FF;
+  }
+</style>

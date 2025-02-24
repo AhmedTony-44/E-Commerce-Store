@@ -1,0 +1,26 @@
+<header class="bg-[#4B0082] text-white shadow-lg sticky top-0 z-40">
+  <nav class="container mx-auto px-4 py-3 flex items-center justify-between">
+    <a routerLink="/" class="text-2xl font-bold">eShop</a>
+    <div class="flex items-center space-x-6">
+      <a routerLink="/products" class="hover:text-blue-200 transition-colors">Products</a>
+      <a routerLink="/categories" class="hover:text-blue-200 transition-colors">Categories</a>
+      <a routerLink="/brands" class="hover:text-blue-200 transition-colors">Brands</a>
+      <ng-container *ngIf="isLoggedIn; else guestLinks">
+        <a routerLink="/wishlist" class="hover:text-blue-200 transition-colors">Wishlist</a>
+        <a (click)="logout()" class="cursor-pointer hover:text-blue-200 transition-colors">Logout</a>
+      </ng-container>
+      <ng-template #guestLinks>
+        <a routerLink="/login" class="hover:text-blue-200 transition-colors">Login</a>
+        <a routerLink="/register" class="hover:text-blue-200 transition-colors">Sign Up</a>
+      </ng-template>
+    </div>
+    <div class="flex items-center space-x-6">
+      <div class="relative">
+        <i class="fas fa-shopping-cart text-xl" routerLink="/cart"></i>
+        <span *ngIf="isLoggedIn && cartCount > 0" class="absolute -top-2 -right-2 bg-blue-500 text-xs w-5 h-5 rounded-full flex items-center justify-center">
+          {{ cartCount }}
+        </span>
+      </div>
+    </div>
+  </nav>
+</header>

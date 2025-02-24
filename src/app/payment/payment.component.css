@@ -1,0 +1,100 @@
+.payment-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  background: url('https://blog.delivery365.app/wp-content/uploads/2023/06/delivery-service-appdelivery365.jpg') no-repeat center center;
+  background-size: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  animation: fadeIn 0.8s ease forwards;
+  opacity: 0;
+}
+
+.payment-header {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #ff7eb3, #ff758c);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.3s ease-in-out;
+}
+
+.submit-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 15px rgba(255, 117, 140, 0.3);
+}
+
+.submit-button:active {
+  transform: scale(0.98);
+  box-shadow: 0px 4px 10px rgba(255, 117, 140, 0.3);
+}
+
+button:disabled {
+  background: gray;
+  cursor: not-allowed;
+}
+
+.alert {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

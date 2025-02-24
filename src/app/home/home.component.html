@@ -1,0 +1,64 @@
+<section class="bg-blue-100 py-16">
+  <div class="container mx-auto px-4 text-center">
+    <h1 class="text-4xl font-bold mb-4">Welcome to Ecommerce-Shop</h1>
+    <p class="text-gray-600 mb-8">Discover amazing products at great prices</p>
+    <div class="max-w-2xl mx-auto relative">
+      <div class="slider-container overflow-hidden relative">
+        <div class="slider flex transition-transform duration-500 ease-in-out" [style.transform]="sliderTransform">
+          <div *ngFor="let product of randomProducts" class="slider-item flex-shrink-0 w-full flex justify-center items-center">
+            <img [src]="product.imageCover" alt="{{ product.title }}" class="slider-image rounded-lg shadow-md" />
+          </div>
+        </div>
+        <button class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-blue-500 text-white px-4 py-2 rounded-md" (click)="prevSlide()">&#10094;</button>
+        <button class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-500 text-white px-4 py-2 rounded-md" (click)="nextSlide()">&#10095;</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="home-container">
+  <h2 class="text-2xl font-bold mb-6">Featured Products</h2>
+
+  <div *ngIf="loading">Loading...</div>
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+  <div *ngIf="!loading && !errorMessage">
+    <div class="products-grid">
+      <div *ngFor="let product of products" class="product-card">
+        <img [src]="product.imageCover" alt="{{ product.title }}" class="product-image" />
+        <div class="product-details">
+          <h3 class="product-title">{{ product.title }}</h3>
+          <p class="product-price">{{ product.price | currency:'EGP' }}</p>
+          <button [routerLink]="['/product', product._id]" class="view-details-button fixed-middle-bottom">View Details</button>
+          <i
+            class="fa heart-icon"
+            [class.fa-heart]="isInWishlist(product)"
+            [class.fa-heart-o]="!isInWishlist(product)"
+            [class.heart-active]="isInWishlist(product)"
+            (click)="toggleWishlist(product)"
+          ></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .product-card {
+    position: relative;
+  }
+  .view-details-button.fixed-middle-bottom {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+  }
+  .view-details-button.fixed-middle-bottom:hover {
+    background-color: #AB84CC !important;
+  }
+  .heart-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+</style>
